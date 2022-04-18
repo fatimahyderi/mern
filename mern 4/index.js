@@ -54,3 +54,7 @@ for(let i = 0; i < num_array.length; i++){
 }
 console.log(`Max value : ${max}`);
 
+
+var max_num = num_array.reduce((total, amount) => { return Math.max(total,amount)}); 
+
+console.log(`Max Value by reduce funtion is ${max_num}.`);
