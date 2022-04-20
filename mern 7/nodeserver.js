@@ -1,4 +1,4 @@
-import http from 'http';
+/*import http from 'http';
 
 const createBody = (req,res) => {
     res.writeHead(200,{'content-type':'text/html'});
@@ -7,4 +7,9 @@ const createBody = (req,res) => {
 }
 
 const server = http.createServer(createBody);
-server.listen(8080);
+server.listen(8080);*/
+
+import EventEmitter from "events";
+const eventEmitter = new EventEmitter();
+
+
