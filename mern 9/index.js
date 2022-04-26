@@ -6,10 +6,16 @@ http.createServer(function(req, res) {
 
   req.pipe(writeStream);
 
-  req.on('end', function () {
-    res.writeHead(200, {"content-type":"text/html"});
-    res.end('<form method="POST"><input name="test" /><input type="submit"></form>');
-  });
+  var readerStream = fs.createReadStream('registerform.html');
+  // Set the encoding to be utf8. 
+
+// Handle stream events --> data, end, and error
+readerStream.on('data', function(chunk) {
+  var data = chunk;
+   res.writeHead(200, {"content-type":"text/html"});
+   res.end(data);
+});
+  
 
   writeStream.on('error', function (err) {
     console.log(err);
