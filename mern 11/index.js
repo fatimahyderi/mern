@@ -27,8 +27,14 @@ const port = 8080
 //          res.send("<form> <input type='text'><input type='submit' value='Submit'></form>");
 //      })
 
+app.set('view engine', 'ejs');
 app.get('/about/:id/form',function(req,res){
-    res.sendFile(path.join('C:\Users\thinclient-142\Desktop\fatima\mern\mern 11\registerform.html'));
+    res.sendFile('registerform.html', { root: '.' })
+    //  res.render('registerform',(err, html) => {
+    //      res.send(html)
+    //res.render('registerform')
+    
 })
+
 
 app.listen(port);

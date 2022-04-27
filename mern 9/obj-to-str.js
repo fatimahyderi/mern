@@ -4,12 +4,12 @@ import http from 'http';
 http.createServer(function(req, res) {
   
 
-  var readerStream = fs.createReadStream('package.json');
+  var readerStream = fs.createReadStream('object.json');
   
 readerStream.on('data', function(chunk) {
   var data = chunk;
-   res.writeHead(200, {"content-type":"text/html"});
-   res.end(JSON.stringify(data));
+   res.writeHead(200, {"content-type":"json"});
+   res.end(data.toString());
 });
   
 
