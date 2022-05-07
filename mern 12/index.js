@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 
 
 const app = express();
-const port = 8080;
+const port = 8888;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const urlencoded = bodyParser.urlencoded({ extended: false });
 
@@ -17,7 +17,13 @@ app.get('/register',function(req,res){
 
 app.post('/postdata',urlencoded,function(req,res){
     console.log(req);
-    res.send("hello from " +req.body.fname);
+    if(req.body.fname=='fatima'){
+        res.send(`hello from ${req.body.fname}`);
+    }
+    else{
+        res.send(`sorry ${req.body.fname} , you r not allowed`);
+    }
+    
 
   
 })
