@@ -16,7 +16,7 @@ app.get('/register',function(req,res){
 })
 
 app.post('/postdata',urlencoded,function(req,res){
-    console.log(req);
+    console.log(req.body);
     if(req.body.fname=='fatima'){
         res.send(`hello from ${req.body.fname}`);
     }
