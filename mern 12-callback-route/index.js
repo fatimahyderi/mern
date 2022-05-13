@@ -1,7 +1,7 @@
-import express from 'express';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import bodyParser from 'body-parser';
+import express from "express";
+import {dirname} from "path";
+import {fileURLToPath} from "url";
+import bodyParser from "body-parser";
 
 
 const app = express();
@@ -23,25 +23,21 @@ const port = 8888;
 //     else{
 //         res.send(`sorry ${req.body.fname} , you r not allowed`);
 //     }
-    
 
-  
+
 // })
 const a = "function";
 const b = "testing";
 
 const use = (a) => {
-   return a;
+  return a;
 };
 
 const callback = () => {
-   console.log(`${use(a)} js`) ;
-
-}
+  console.log(`${use(a)} js`);
+};
 
 console.log(callback());
-
-
 
 
 app.listen(port);
