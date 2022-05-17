@@ -8,9 +8,15 @@ app.get('/',function(req,res){
     
     const getsalary = () => {
         let salaries = [3000,4000,5000]
-        return new Promise((resolve,reject) => {
-            resolve(salaries[1])
-        });
+        let d = new Date();
+        let day = d.getDay();
+        console.log(day);
+        if(day == 2){
+            return new Promise((resolve,reject) => {
+                resolve(salaries[1])
+            });
+        }
+        
     }
 
     const getdata = () => {
@@ -48,6 +54,8 @@ app.get('/',function(req,res){
     }).then((msg) => {
         console.log(`${salary1} ${msg} to ${user1} `);
     })
+
+    res.end()
 })
 
 app.listen(port);
