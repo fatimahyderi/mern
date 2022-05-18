@@ -67,16 +67,20 @@ console.log(`server running on port ${port}`);
 
 //     res.end();
 // })
+
+var currencyrate;
+var usdtopkr;
+
+app.get('/currency/:id',function(req,res){
+    var currencyvalue = req.params['id'];
 const getCurrencyRate = () => {
     var options = {
         url: 'https://v6.exchangerate-api.com/v6/46fe7a2e267c86c3b3a7661d/latest/USD',
-        headers: {
-            'User-Agent': 'request'
-        }
+
     };
     return new Promise(function(resolve, reject) {
     	// Do async job
-        request.get(options, function(err, resp, body) {
+        request.get(options, function(err, res, body) {
             if (err) {
                 reject(err);
             } else {
@@ -87,22 +91,23 @@ const getCurrencyRate = () => {
 }
 
 const totalRupees = () => {
-    let value = 10;
+    //let value = 10;
     return new Promise((resolve,reject) => {
-        resolve(value)
+        resolve(currencyvalue)
     });
 }
 
-var currencyrate;
-var usdtopkr;
-getCurrencyRate().then((result) => {
-    currencyrate = result;
-    usdtopkr = currencyrate.conversion_rates.PKR;
-    console.log(`1 USD = ${usdtopkr} Rupees`);
-    return totalRupees()
-}).then((totalamount) => {
-    console.log(`${totalamount} USD =  ${totalamount * usdtopkr} Rupees`)
+
+    getCurrencyRate().then((result) => {
+        currencyrate = result;
+        usdtopkr = currencyrate.conversion_rates.PKR;
+        console.log(`1 USD = ${usdtopkr} Rupees`);
+        return totalRupees()
+    }).then((currencyvalue) => {
+        console.log(`${currencyvalue} USD =  ${currencyvalue * usdtopkr} Rupees`)
+    })
 })
+
 
 
 
