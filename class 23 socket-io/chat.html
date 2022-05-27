@@ -17,6 +17,7 @@
   </head>
   <body>
     <h4>Online Users : <span id="counter"></span></h4>
+    <p id="typing"></p>
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
@@ -45,7 +46,7 @@
       //   //window.scrollTo(0, document.body.scrollHeight);
       // });
 
-      socket.on("hello", (arg) => {
+      socket.on("counter", (arg) => {
         var user = document.getElementById('counter');
         user.textContent = arg;
       });
@@ -56,6 +57,11 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
+      
+      socket.on('typing',(arg) => {
+        var usertyping = document.getElementById('typing');
+        usertyping.textContent = arg;
+      })
 
      
     </script>

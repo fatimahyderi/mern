@@ -20,14 +20,15 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-   
+    //console.log(socket.client.conn.server);
     //console.log('a user connected');
     let connectedUsersCount =  socket.client.conn.server.clientsCount;
     //let oneUserLeft = connectedUsersCount - 1;
-    // socket.on('onlineuser' , (connectedUsersCount) => {
+    // socket.on('onlineuser' , (connectedUsersCount) => { 
     //     io.emit('onlineuser' ,connectedUsersCount)
     // })
-    socket.emit("hello", connectedUsersCount);
+    socket.emit("counter", connectedUsersCount);
+    socket.emit("typing","User is Typing");
     // socket.on('counter',(connectedUsersCount)=>{
     //   console.log( socket.client.conn.server.clientsCount + " users connected" );
     //   io.emit('counter' , connectedUsersCount)
