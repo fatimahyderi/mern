@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
     // socket.on('onlineuser' , (connectedUsersCount) => {
     //     io.emit('onlineuser' ,connectedUsersCount)
     // })
-    socket.emit("hello", connectedUsersCount);
+    socket.emit("start", connectedUsersCount);
     // socket.on('counter',(connectedUsersCount)=>{
     //   console.log( socket.client.conn.server.clientsCount + " users connected" );
     //   io.emit('counter' , connectedUsersCount)
