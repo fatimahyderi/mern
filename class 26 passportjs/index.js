@@ -68,8 +68,8 @@ app.use(passport.initialize());
 app.use(passport.session());  
 
 passport.use('facebook', new FacebookStrategy({
-    clientID: 735370444175419,
-    clientSecret: "794ea35d285f1f78154646a12638f6ae",
+    clientID: 702230420991997,
+    clientSecret: "433c8375c036c1c59d0d77543cb7102e",
     callbackURL: "http://localhost:3000/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
   },
@@ -84,7 +84,7 @@ app.get('/', (req,res)=> {
     res.send();
 });
 
-app.get('/auth/facebooksss', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { scope: ['email']}), function(req, res) {
     // Successful authentication, redirect home.

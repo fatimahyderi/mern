@@ -18,7 +18,10 @@ app.use(session({
     saveUninitialized: false
 }))
 
-passport.use(new LocalStrategy({ usernameField: 'email' }))
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.use('local' , new LocalStrategy({ usernameField: 'email' }))
 
 app.set('view engine', 'ejs');
 
