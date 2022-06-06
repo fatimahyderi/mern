@@ -1,12 +1,11 @@
 
 import express from 'express';
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import pkg from 'mongodb';
+const { MongoClient, ServerApiVersion } = pkg;
 import bodyParser from 'body-parser';
 import 'dotenv/config';
 import {router} from './routes/route.js';
 
-const uri = "mongodb+srv://codegirls:codegirls12345@cluster0.v34dklr.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 const app = express();
 
 
