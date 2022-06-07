@@ -1,7 +1,6 @@
 
 import express from 'express';
-import pkg from 'mongodb';
-const { MongoClient, ServerApiVersion } = pkg;
+import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';
 import 'dotenv/config';
 import axios from 'axios';

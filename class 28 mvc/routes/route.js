@@ -1,14 +1,16 @@
+import dotenv from 'dotenv';
 import express from "express";
 import bodyParser from 'body-parser';
-import pkg from 'mongodb';
-const { MongoClient, ServerApiVersion } = pkg;
-import 'dotenv/config';
+import {MongoClient} from 'mongodb';
+
+dotenv.config();
 const router = express.Router();
 const products = [];
 
-const uri = "mongodb+srv://codegirls:codegirls12345@cluster0.v34dklr.mongodb.net/?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+//const uri = "mongodb+srv://codegirls:codegirls12345@cluster0.v34dklr.mongodb.net/?retryWrites=true&w=majority";
+
+const client = new MongoClient(process.env.uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 router.get('/add',function(req,res){

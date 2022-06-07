@@ -1,11 +1,10 @@
-
+import dotenv from 'dotenv';
 import express from 'express';
-import pkg from 'mongodb';
-const { MongoClient, ServerApiVersion } = pkg;
+import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';
-import 'dotenv/config';
 import {router} from './routes/route.js';
 
+dotenv.config();
 const app = express();
 
 
