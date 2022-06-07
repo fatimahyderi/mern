@@ -4,18 +4,18 @@
 
     </head>
     <body>
-        <form action="" method="Post" class="form-example">
+        <form action="/edit/<%=productdata._id%>" method="Post" class="form-example">
             <div class="form-example">
               <label for="productname">Product Name </label>
-              <input type="text" name="productname" id="productname" required>
+              <input type="text" name="productname" value="<%=productdata.productname%>" id="productname" required>
             </div>
             <div class="form-example">
               <label for="brand">Product Brand </label>
-              <input type="text" name="brand" id="brand" required>
+              <input type="text" name="brand" value="<%=productdata.brand%>" id="brand" required>
             </div>
             <div class="form-example">
                 <label for="model">Product Model </label>
-                <input type="text" name="model" id="model" required>
+                <input type="text" name="model" value="<%=productdata.model%>" id="model" required>
               </div>
             <div class="form-example">
               <input type="submit" value="Edit In Products">

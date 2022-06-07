@@ -5,18 +5,30 @@
         <table>
           
             <tr>
+              <th>Product ID</th>
               <th>Product Name</th>
               <th>Product Brand</th>
               <th>Product Model</th>
+              <th>Edit Product</th>
+              <th>Delete Product</th>
             </tr>
             <% products.forEach((products)=> { %>
             <tr>
+              <td><%= products._id %></td>
               <td><%= products.productname %></td>
               <td><%= products.brand %></td>
               <td><%= products.model %></td>
+              <td><a href="http://localhost:8080/edit/<%=products._id%>" class="edit"
+                data-toggle="modal">Edit</a></td>
+              <td><a href="http://localhost:8080/delete/<%=products._id%>" class="edit"
+                data-toggle="modal">Delete</td>
+
             </tr>
             <% }) %>
           </table>
+
+          <a href="http://localhost:8080/add" class="edit"
+            data-toggle="modal">Add Product</a>
           
           <%- include('includes/footer'); -%>
 </html>
