@@ -1,0 +1,32 @@
+body{
+    background-color: aqua;
+}
+
+form.form-example {
+    display: table;
+}
+
+div.form-example {
+    display: table-row;
+}
+
+label, input {
+    display: table-cell;
+    margin-bottom: 10px;
+}
+
+label {
+    padding-right: 10px;
+}
+
+table, th, td {
+    border:1px solid black;
+  }
+
+table{
+    width: 100%;
+}
+
+.addbutton{
+   color:black;
+}
