@@ -1,6 +1,5 @@
-//import dotenv from 'dotenv';
 import pkg from 'mongodb';
-const {MongoClient} = pkg;
+const {MongoClient,ObjectId} = pkg;
 
 //dotenv.config();
 const dbConnection = async () => {

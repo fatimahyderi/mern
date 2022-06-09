@@ -1,3 +1,7 @@
+body{
+    background-color: aqua;
+}
+
 form.form-example {
     display: table;
 }
@@ -21,4 +25,8 @@ table, th, td {
 
 table{
     width: 100%;
+}
+
+.addbutton{
+   color:black;
 }
