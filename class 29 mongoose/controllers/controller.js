@@ -1,73 +1,120 @@
 import {dbConnection} from '../database/connection.js';
-import pkg from 'mongodb';
-const {Mongoclient,ObjectId} = pkg;
+// import pkg from 'mongodb';
+// const {Mongoclient,ObjectId} = pkg;
+import mongoose from "mongoose";
+import { userDB , productDB } from '../models/usercollection.js'
 
 
-const view = (req,res) => {
-    dbConnection().then((client) => {
-        const usersCollection = client.db('mydb').collection('UsersCollection');
-            usersCollection.find( { } ).toArray(function(err, result) {
-                if (err) throw err;
-                res.render('view',{
-                        products : result
-                    });
-            
+const shoppagelogin = (req,res) => {
+    res.render('register')
+}
+
+const userregister = (req , res ) => {
+    console.log(req.body)
+    const user = new userDB({
+        username: req.body.username,
+        dateofbirth: req.body.dateofbirth,
+        address: req.body.address,
+        email: req.body.email,
+        password: req.body.password
     })
+    console.log(user)
+    user.save().then(() => {
+        //res.send("data")
+        res.render('login');
+    });
+
+}
+
+const shopview = (req , res ) => {
+    console.log(req.body)
+    productDB.find().then(products => { 
+        res.render('../views/shop' , {products} )
     })
 }
 
-const addform = (req,res) => {
-    res.render('add');
+const addproductform = (req,res) => {
+    res.render('productform')
 }
-const add = (req,res) => {
-    dbConnection().then((client) => {
-        const usersCollection = client.db('mydb').collection('UsersCollection');
-        usersCollection.insertOne(req.body, (err,result) => {
-            if(err) throw err;
-            res.redirect('/')
+
+const productadd = (req,res) =>{
+        const productlist = new productDB({
+            productname: req.body.productname,
+            brand: req.body.brand,
+            model: req.body.model
         })
-    })
-}
-
-const editdata = (req,res) => {
-    console.log('inside update');
-    console.log(req.params.id)
-    dbConnection().then(async(client) => {
-        const productdata = await client.db('mydb').collection('UsersCollection').findOne({
-            _id: new ObjectId(req.params.id)
+        productlist.save().then(() => {
+            res.send(`${productlist.productname} saved in db`)
         });
-        console.log(productdata)
-    res.render('../views/edit', { productdata })
-    })
+    
+    
 }
 
-const updatedata = (req,res) => {
-    console.log("inside update data")
-    dbConnection().then((client) => {
-        const usersCollection = client.db('mydb').collection('UsersCollection');
-        usersCollection.updateOne(
-            {_id: new ObjectId(req.params.id)},
-            {$set : { "productname" : req.body.productname, "brand" : req.body.brand, "model" : req.body.model}},
-            (err,result) => {
-                if(err) throw err;
-                    res.redirect('/')
-            }
-            )
-    })
-}
+// const view = (req,res) => {
+//     dbConnection().then((client) => {
+//         const usersCollection = client.db('mydb').collection('UsersCollection');
+//             usersCollection.find( { } ).toArray(function(err, result) {
+//                 if (err) throw err;
+//                 res.render('view',{
+//                         products : result
+//                     });
+            
+//     })
+//     })
+// }
 
-const deletedata = (req,res) => {
-    console.log("inside delete");
-    dbConnection().then((client) => {
-        const usersCollection = client.db('mydb').collection("UsersCollection");
-        usersCollection.deleteOne(
-            {_id: new ObjectId(req.params.id)},
-            (err,result) => {
-                if(err) throw err;
-                    res.redirect('/')
-            }
-        )
-    })
-}
+// const addform = (req,res) => {
+//     res.render('add');
+// }
+// const add = (req,res) => {
+//     dbConnection().then((client) => {
+//         const usersCollection = client.db('mydb').collection('UsersCollection');
+//         usersCollection.insertOne(req.body, (err,result) => {
+//             if(err) throw err;
+//             res.redirect('/')
+//         })
+//     })
+// }
 
-export {view , add , addform , editdata , updatedata , deletedata }
+// const editdata = (req,res) => {
+//     console.log('inside update');
+//     console.log(req.params.id)
+//     dbConnection().then(async(client) => {
+//         const productdata = await client.db('mydb').collection('UsersCollection').findOne({
+//             _id: new ObjectId(req.params.id)
+//         });
+//         console.log(productdata)
+//     res.render('../views/edit', { productdata })
+//     })
+// }
+
+// const updatedata = (req,res) => {
+//     console.log("inside update data")
+//     dbConnection().then((client) => {
+//         const usersCollection = client.db('mydb').collection('UsersCollection');
+//         usersCollection.updateOne(
+//             {_id: new ObjectId(req.params.id)},
+//             {$set : { "productname" : req.body.productname, "brand" : req.body.brand, "model" : req.body.model}},
+//             (err,result) => {
+//                 if(err) throw err;
+//                     res.redirect('/')
+//             }
+//             )
+//     })
+// }
+
+// const deletedata = (req,res) => {
+//     console.log("inside delete");
+//     dbConnection().then((client) => {
+//         const usersCollection = client.db('mydb').collection("UsersCollection");
+//         usersCollection.deleteOne(
+//             {_id: new ObjectId(req.params.id)},
+//             (err,result) => {
+//                 if(err) throw err;
+//                     res.redirect('/')
+//             }
+//         )
+//     })
+// }
+
+export {shoppagelogin , userregister , shopview , addproductform , productadd}

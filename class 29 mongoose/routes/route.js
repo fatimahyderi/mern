@@ -1,5 +1,5 @@
 import express from "express";
-import {view , addform , add , editdata , updatedata , deletedata} from "../controllers/controller.js"
+import {shoppagelogin , userregister , shopview , addproductform , productadd} from "../controllers/controller.js"
 
 const router = express.Router();
 // const products = [];
@@ -9,11 +9,20 @@ const router = express.Router();
 
 // const client = new MongoClient(process.env.uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-router.get('/', view)
+// user side routes
+router.get('/', shoppagelogin)
+router.post('/login', userregister)
+router.post('/shop' , shopview)
 
-router.get('/add',addform)
+// admin side routes
+router.get('/admin/product' , addproductform)
+router.post('/admin/shop' , productadd)
 
-router.post('/add', add);
+
+
+// router.get('/add',addform)
+
+// router.post('/add', add);
 // // router.post('/add',function(req,res){
 // //    // console.log(req.body)
 // //     // products.push({
@@ -30,9 +39,9 @@ router.post('/add', add);
 // router.get('/edit',function(req,res){
 //     res.render('edit');
 // })
-router.get('/edit/:id', editdata);
-router.post('/edit/:id',updatedata);
- router.get('/delete/:id', deletedata);
+// router.get('/edit/:id', editdata);
+// router.post('/edit/:id',updatedata);
+//  router.get('/delete/:id', deletedata);
 // router.get('/edit',function(req,res){
 //     res.render('edit');
 // })
