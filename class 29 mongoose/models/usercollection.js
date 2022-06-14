@@ -28,8 +28,16 @@ const productSchema = new mongoose.Schema({
   },
   model: {
     type: String
+  },
+  imagePath: {
+    type: String
+  },
+  price: {
+    type: Number
   }
 })
+
+
 
 // The alternative to the export model pattern is the export schema pattern.
 const userDB = mongoose.model('Users', userSchema);

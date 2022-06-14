@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <%- include('includes/header'); -%>
+  <h2><%=productData.productname%> Description</h2>
+
+    <img src="static/<%=productData.imagePath%>" >
+    <p><%=productData.description%></p>
+    <p><%=productData.price%> RS</p> 
+
+    <a href="http://localhost:8080/user/checkout/<%=productData._id%>" class="addbutton"
+            data-toggle="modal">CheckOut

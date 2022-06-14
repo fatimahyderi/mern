@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%- include('includes/header'); -%>
+  <h2>Data Inventory</h2>
+        <table>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Brand</th>
+              <th>Product Model</th>
+              <th>Product Price</th>
+              <th>Product Image</th>
+              <th>Edit Product</th>
+              <th>Delete Product</th>
+            </tr>
+            <% products.forEach((products)=> { %>
+            <tr>
+              <td><%= products._id %></td>
+              <td><%= products.productname %></td>
+              <td><%= products.brand %></td>
+              <td><%= products.model %></td>
+              <td><%= products.price %></td>
+              <td><img src="../static/<%= products.imagePath %>"</td>
+              <td><a href="http://localhost:8080/admin/edit/<%=products._id%>" class="addbutton"
+                data-toggle="modal">Edit</a></td>
+              <td><a href="http://localhost:8080/admin/delete/<%=products._id%>" class="addbutton"
+                data-toggle="modal">Delete</td>
+
+            </tr>
+            <% }) %>
+          </table>
+          <a href="http://localhost:8080/admin/add" class="addbutton"
+            data-toggle="modal">Add Product
+          
+          <%- include('includes/footer'); -%>
+</html>

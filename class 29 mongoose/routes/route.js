@@ -1,5 +1,5 @@
 import express from "express";
-import {shoppagelogin , userregister , shopview , addproductform , productadd} from "../controllers/controller.js"
+import {shoppagelogin , userregister , shopview , addproductform , productadd , checkusername} from "../controllers/controller.js"
 
 const router = express.Router();
 // const products = [];
@@ -12,6 +12,7 @@ const router = express.Router();
 // user side routes
 router.get('/', shoppagelogin)
 router.post('/login', userregister)
+router.get('/login' , checkusername)
 router.post('/shop' , shopview)
 
 // admin side routes

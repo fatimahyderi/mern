@@ -26,6 +26,15 @@ const userregister = (req , res ) => {
 
 }
 
+const checkusername = (req,res) => {
+    if(req.body.username == "admin"){
+        res.send("u r admin")
+    }
+    else{
+        res.send("u r user")
+    }
+}
+
 const shopview = (req , res ) => {
     console.log(req.body)
     productDB.find().then(products => { 
@@ -41,7 +50,9 @@ const productadd = (req,res) =>{
         const productlist = new productDB({
             productname: req.body.productname,
             brand: req.body.brand,
-            model: req.body.model
+            model: req.body.model,
+            price: req.body.price,
+            imagePath: req.body.imagePath
         })
         productlist.save().then(() => {
             res.send(`${productlist.productname} saved in db`)
@@ -117,4 +128,4 @@ const productadd = (req,res) =>{
 //     })
 // }
 
-export {shoppagelogin , userregister , shopview , addproductform , productadd}
+export {shoppagelogin , userregister , shopview , addproductform , productadd , checkusername}

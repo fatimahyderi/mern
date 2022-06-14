@@ -8,6 +8,8 @@
               <th>Product Name</th>
               <th>Product Brand</th>
               <th>Product Model</th>
+              <th>Product Price</th>
+              <th>Product Image</th>
               <th>Edit Product</th>
               <th>Delete Product</th>
             </tr>
@@ -17,6 +19,8 @@
               <td><%= products.productname %></td>
               <td><%= products.brand %></td>
               <td><%= products.model %></td>
+              <td><%= products.price %></td>
+              <td><img src="../static/<%= products.imagePath %>"</td>
               <td><a href="http://localhost:8080/edit/<%=products._id%>" class="addbutton"
                 data-toggle="modal">Edit</a></td>
               <td><a href="http://localhost:8080/delete/<%=products._id%>" class="addbutton"
