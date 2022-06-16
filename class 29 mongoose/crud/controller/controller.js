@@ -40,7 +40,8 @@ const update = (req, res) => {
 const homeView = (req, res) => {
     itemsDB.find().
         then(userData => {
-            res.render('index', { userData })
+            //res.render('index', { userData })
+            res.send(userData)
         });
 }
 

@@ -6,7 +6,7 @@ import { userDB , productDB } from '../models/usercollection.js'
 
 
 const shoppagelogin = (req,res) => {
-    res.render('register')
+    res.send('register')
 }
 
 const userregister = (req , res ) => {
@@ -38,7 +38,8 @@ const checkusername = (req,res) => {
 const shopview = (req , res ) => {
     console.log(req.body)
     productDB.find().then(products => { 
-        res.render('../views/shop' , {products} )
+       // res.render('../views/shop' , {products} )
+       res.send(products)
     })
 }
 
